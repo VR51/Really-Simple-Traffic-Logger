@@ -6,7 +6,9 @@ https://journalxtra.com/web-development/php/really-simple-traffic-logger/
 
 INSTRUCTIONS
 
-In the zip file is a folder called 'stats'. This folder contains the executable script called stl.php, a subdirectory called 'data', a readme file and the executable script called stl.php.
+Download and unzip the package.
+
+The files will be unzipped into a directory called 'Really Simple Traffic Logger'. Change the directory name to just 'stats'. This directory contains the executable script called stl.php, a subdirectory called 'data' and a readme file.
 
 Before unzipping the package on your server, please make sure there is not already a directory called 'stats'.
 
