@@ -1,0 +1,74 @@
+Options +Indexes
+
+# STRONG HTACCESS PROTECTION
+<Files ~ "^.*\.([Hh][Tt][Aa])">
+ order allow,deny
+ deny from all
+</Files>
+
+# SET INDEX OPTIONS
+IndexOptions IgnoreCase FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=*
+
+# SET DISPLAY ORDER
+IndexOrderDefault Descending Name
+
+# SPECIFY HEADER FILE
+HeaderName header.html
+ 
+# SPECIFY FOOTER FILE
+ReadmeName footer.html
+
+# IGNORE THESE FILES
+IndexIgnore header.html footer.html favicon.ico .htaccess .ftpquota .DS_Store icons *.log *,v *,t .??* *~ *#
+
+
+# secure directory by disabling script execution
+AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
+Options -ExecCGI
+
+## Move specified script file type uploads to a secure location and rename the file.
+## Create a safe upload directory on your server.
+## Put the secure no-exec .htaccess described at http://journalxtra.com into the directory.
+## Change the final line of this block to reflect your secure directory's path and name
+RewriteCond %{REQUEST_METHOD} ^PUT$ [OR]
+RewriteCond %{REQUEST_METHOD} ^MOVE$
+RewriteRule (.*)\.(php|pl|py|jsp|htm|html|shtml|sh)$ /../safehouse/$1.noexec [L]
+# RewriteRule (%{SCRIPT_NAME}) /safehouse/$1.noexec [L]
+
+
+# FILE DESCRIPTIONS
+AddDescription "<span class='description'>MPEG Layer 3 Format</span>" .mp3
+AddDescription "<span class='description'>GZIP compressed TAR archive</span>" .tgz .tar.gz
+AddDescription "<span class='description'>GZIP compressed archive</span>" .Z .z .gz .zip
+AddDescription "<span class='description'>RAR compressed archive</span>" .rar
+AddDescription "<span class='description'>TAR compressed archive</span>" .tar
+AddDescription "<span class='description'>ZIP compressed archive</span>" .zip 
+AddDescription "<span class='description'>Windows executable file</span>" .exe
+AddDescription "<span class='description'>Common Gateway Interface</span>" .cgi
+AddDescription "<span class='description'>Joint Photographics Experts Group</span>" .jpg .jpeg .jpe
+AddDescription "<span class='description'>Graphic Interchange Format</span>" .gif
+AddDescription "<span class='description'>Portable Network Graphic</span>" .png
+AddDescription "<span class='description'>Vector graphic</span>" .ps .ai .eps
+AddDescription "<span class='description'>Hypertext Markup Language</span>" .html .shtml .htm
+AddDescription "<span class='description'>Cascading Style Sheet</span>" .css
+AddDescription "<span class='description'>DocType Definition</span>" .dtd
+AddDescription "<span class='description'>Extensible Markup Language</span>" .xml
+AddDescription "<span class='description'>Win32 compressed HTML help</span>" .chm
+AddDescription "<span class='description'>Adobe Portable Document Format</span>" .pdf
+AddDescription "<span class='description'>Plain text file</span>" .txt .nfo .faq .readme
+AddDescription "<span class='description'>Unix man page</span>" .man
+AddDescription "<span class='description'>Email data</span>" .eml .mbox
+AddDescription "<span class='description'>Microsoft Word document</span>" .doc
+AddDescription "<span class='description'>PHP: Hypertext Preprocessor script</span>" .php  .php3 .php4
+AddDescription "<span class='description'>PHP: Hypertext Preprocessor source code</span>" .phps
+AddDescription "<span class='description'>Javascript</span>" .js
+AddDescription "<span class='description'>Java code</span>"  .java
+AddDescription "<span class='description'>Unix shell script</span>" .sh .shar .csh .ksh .command
+AddDescription "<span class='description'>Mac OS X shell script</span>" .command
+AddDescription "<span class='description'>Configuration file</span>" .conf
+AddDescription "<span class='description'>Mac OS X terminal</span>" .term
+AddDescription "<span class='description'>BitTorrent file</span>" .torrent
+AddDescription "<span class='description'>Windows link</span>" .lnk .url
+AddDescription "<span class='description'>Coma Separated File - Click to download</span>" .csv
+# DEFAULT DESCRIPTION
+AddDescription "<span class='description'>Clicking this might destroy your computer!.</span>" *
